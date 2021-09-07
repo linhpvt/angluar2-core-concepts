@@ -1,0 +1,60 @@
+<div class="top-menu">
+  <img
+    class="logo"
+    src="https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg"
+  />
+</div>
+<div>
+  <h2
+    i18n="
+      welcome message|This is an introduction new Angular world called
+      Angular.IO
+    "
+  ></h2>
+</div>
+<div>
+  <button (click)="onEditCard()" i18n>Edit card</button>
+</div>
+<!-- <div *ngIf="posts$ | async as posts">
+  <div *ngIf="posts">
+    <section
+      *ngFor="let post of posts"
+      style="margin-top: 10; margin-bottom: 10"
+    >
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+    </section>
+  </div> -->
+
+<div i18n>
+  { coursesTotal, plural, =0 {No courses available.}, =1 {One course is
+  available.} other {A total of {{ coursesTotal }} courses are available.} }
+</div>
+
+<div class="courses" (click)="upOneLevel($event)">
+  <course-card
+    *ngFor="
+      let course of courses;
+      index as i;
+      first as isFirst;
+      last as isLast;
+      even as isEven;
+      odd as isOdd
+    "
+    [class.is-first]="isFirst"
+    [class.is-last]="isLast"
+    [class.is-even]="isEven"
+    [class.is-odd]="isOdd"
+    [cardIndex]="i + 1"
+    type="beginner"
+    (notifyCourseCard)="onReceivedCourseCard($event)"
+    [course]="course"
+  >
+    <div class="course-image">
+      <img [src]="course.iconUrl" alt="" width="250" />
+    </div>
+    <p class="course-description">
+      {{ course.longDescription }}
+    </p>
+  </course-card>
+</div>

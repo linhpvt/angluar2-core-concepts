@@ -1,0 +1,34 @@
+/* won't work at component level */
+/* course-card {
+  display: block;
+} */
+/* need to turn into -->  */
+:host {
+  display: block;
+}
+:host .beginner {
+  background-color: aqua;
+}
+:host .advanced {
+  background-color: blueviolet;
+}
+:host .intermediate {
+  background-color: cornflowerblue;
+}
+
+/* .course-card {
+  margin-bottom: 40px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 20px 0;
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.14),
+    0 4px 8px -1px rgba(0, 0, 0, 0.12);
+} */
+
+.course-card ::ng-deep .course-description {
+  /* :host .course-description { */
+  max-width: 360px;
+  margin: 0 auto;
+  margin-top: 15px;
+  user-select: none;
+}

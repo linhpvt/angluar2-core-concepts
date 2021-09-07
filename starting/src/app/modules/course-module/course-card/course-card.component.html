@@ -1,0 +1,29 @@
+<ng-container *ngIf="course">
+  <div
+    class="course-card"
+    type="beginner"
+    [style.text-decoration]="'underline'"
+    [ngClass]="cssClassByCategory()"
+  >
+    <div class="course-title">{{ cardIndex + " " + course.description }}</div>
+    <ng-content select=".course-image"></ng-content>
+    <div class="course-category">
+      <div i18n>
+        { course.category, select, BEGINNER {Beginner} INTERMEDIATE
+        {Intermediate} ADVANCED {Advanced} }
+      </div>
+    </div>
+    <hr />
+    <input
+      type="text"
+      [value]="course.description"
+      (keyup)="onChangeHandler($event)"
+    />
+    <hr />
+    <ng-content select=".course-description"></ng-content>
+    <hr />
+    <p *ngIf="!isIconAvailable()">No Image available</p>
+
+    <button (click)="onClick()">View detail</button>
+  </div>
+</ng-container>
